@@ -91,6 +91,7 @@ recommended to reach out to prof _before_ the deadline to discuss
 extensions.
 
 ## what we'll cover
+
 this course is titled _Science of Programming_, which boils down to one
 core topic: **program verification**. _**def:**_ use logical reasoning
 to prove that a program does what is intended using properties of the
@@ -120,20 +121,20 @@ we can prove this by reasoning about the possible values for `z` & `x` relative 
 
 $$
 \begin{aligned}
-(1) && \because   && z_i &>= c && \textit{z starts as $>=$ c} \\
+(1) && \because   && z_i &\geq c && \textit{z starts as $\geq$ c} \\
     && \\
-    &&            && x_l &<= 0 && \textit{two ranges of possible values} \\
+    &&            && x_l &\leq 0 && \textit{two ranges of possible values} \\
     &&            && x_g &> 0 \\
     && \\
-    &&            && x_l &\to \text{if skipped} \\
+    &&            && x_l &\longrightarrow \text{if skipped} \\
 (2) &&            && z_f &\equiv z_i \\
     && \\
-    &&            && x_g &\to z_f = z_i + x_g \\
-    &&            && z_f &= z_i + \text{value $>=$ 0} \\
-(3) &&            && z_f &>= zi \\
+    &&            && x_g &\longrightarrow z_f = z_i + x_g \\
+    &&            && z_f &= z_i + \text{value $\geq$ 0} \\
+(3) &&            && z_f &\geq zi \\
 \\
-    &&            && (2) &\land (3) \to z_f >= z_i && \textit{z can only increase or not change} \\
-    && \therefore && (1) &\to z_f >= c \space\space\blacksquare \\
+    &&            && (2) &\land (3) \longrightarrow z_f \geq z_i && \textit{z can only increase or not change} \\
+    && \therefore && (1) &\longrightarrow z_f \geq c \space\blacksquare \\
 \end{aligned}
 $$
 
@@ -141,7 +142,19 @@ $$
 
 ### definitions
 
+- _**logic**_&mdash;the study of formal or valid reasoning
+- _**propostion**_&mdash;a declarative sentence that is either true or false
+- _**propostional logic**_&mdash;logic over _**propositional variables**_ (expressed as letters `p`, `q`, `r`, ...) which represent propositions
+
 ### operators
+
+logic is formed w/ _**propositional operators**_, or conjunctions:
+
+- and ( $\land$ )
+- or ( $\lor$ )
+- not ( $\neg$ )
+- implication ( $\longrightarrow$ )
+- biconditional ( $\leftrightarrow$ )
 
 ### some examples
 
@@ -183,7 +196,7 @@ only (1) is a propostion; (2) is a question (propositions must be assertions) & 
 
 :::{.question}
 
-> translate each of the following to either $p \implies q$ or $q \implies p$:
+> translate each of the following to either $p \longrightarrow q$ or $q \longrightarrow p$:
 >
 > 1. if `p` then `q`
 > 2. `p` is suffient for `q`
@@ -193,8 +206,8 @@ only (1) is a propostion; (2) is a question (propositions must be assertions) & 
 
 :::
 
-1. $p \to q$
-2. $p \to q$
-3. $q \to p$
-4. $q \to p$
-5. $p \to q$
+1. $p \longrightarrow q$
+2. $p \longrightarrow q$
+3. $q \longrightarrow p$
+4. $q \longrightarrow p$
+5. $p \longrightarrow q$
