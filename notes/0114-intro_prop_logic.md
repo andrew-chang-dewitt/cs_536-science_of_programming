@@ -154,7 +154,7 @@ logic is formed w/ _**propositional operators**_, or conjunctions:
 - or ( $\lor$ )
 - not ( $\neg$ )
 - implication ( $\longrightarrow$ )
-- biconditional ( $\leftrightarrow$ )
+- biconditional ( $\longleftrightarrow$ )
 
 ### some examples
 

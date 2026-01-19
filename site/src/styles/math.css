@@ -15,7 +15,11 @@
 .katex .mathnormal,
 .katex,
 math {
-  font: var(--fonts-size-regular) var(--fonts-family-mono);
+  font:
+    var(--fonts-size-regular) var(--fonts-family-mono),
+    KaTeX_Main,
+    Times New Roman,
+    serif;
   /*
   font-family: var(--fonts-family-mono);
   font-size: var(--fonts-size-regular);
