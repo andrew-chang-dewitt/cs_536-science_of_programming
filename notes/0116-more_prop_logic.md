@@ -11,6 +11,7 @@ keywords:
 meta:
   byline: Andrew Chang-DeWitt
   published: "2026-01-16T10:00-06:00"
+  updated: "2026-01-21T09:00-06:00"
 ---
 
 ## agenda
@@ -314,6 +315,175 @@ that $\sigma(p) = False$.
 >        ???
 >    </details>
 
-> [!TODO]
->
-> Finish examples & add summary of rules at end
+## some prop logic rules
+
+- **law of contrapositive**
+
+  $$
+  \begin{align}
+  p \longrightarrow q \iff \neg q \longrightarrow p
+  \end{align}
+  $$
+
+- **definition of implication**
+
+  $$
+  \begin{align}
+  p \longrightarrow q \iff \neg p \lor q
+  \end{align}
+  $$
+
+- **negation of implication**
+
+  $$
+  \begin{align}
+  \neg (p \longrightarrow q) \iff p \lor q
+  \end{align}
+  $$
+
+- **definition of biconditional**
+
+  $$
+  \begin{align}
+  (p \longleftrightarrow q) \iff (p \longrightarrow q) \land (q \longrightarrow p)
+  \end{align}
+  $$
+
+- **commutativity**
+
+  $$
+  \begin{align}
+  p \lor  q &\iff q \lor  p \\
+  p \land q &\iff q \land q
+  \end{align}
+  $$
+
+- **associativity**
+
+  $$
+  \begin{align}
+  (p \lor q) \lor r &\iff p \lor (q \lor r) \\
+  (p \land q) \land r &\iff p \land (q \land r)
+  \end{align}
+  $$
+
+- **distributivity**
+
+  $$
+  \begin{align}
+  (p \lor q) \land r &\iff (p \land r) \lor (q \land r) \\
+  (p \land q) \lor r &\iff (p \lor r) \land (q \lor r)
+  \end{align}
+  $$
+
+- **identity**
+
+  $$
+  \begin{align}
+  p \land T &\iff p \\
+  p \lor  F &\iff p
+  \end{align}
+  $$
+
+- **idempotency**
+
+  $$
+  \begin{align}
+  p \lor  p &\iff p \\
+  p \land p &\iff p
+  \end{align}
+  $$
+
+- **domination**
+
+  $$
+  \begin{align}
+  p \lor  T &\iff T \\
+  p \land F &\iff F \\
+  \end{align}
+  $$
+
+- **absurdity**
+
+  $$
+  \begin{align}
+  (F \longrightarrow p) \iff T
+  \end{align}
+  $$
+
+- **contradiction**
+
+  $$
+  \begin{align}
+  p \land \neg p \iff F
+  \end{align}
+  $$
+
+- **excluded middle**
+
+  $$
+  \begin{align}
+  p \lor \neg p \iff T
+  \end{align}
+  $$
+
+- **double negation**
+
+  $$
+  \begin{align}
+  \neg \neg p \iff p
+  \end{align}
+  $$
+
+- **DeMorgan's laws**
+
+  $$
+  \begin{align}
+  \neg (p \land q) &\iff (\neg p \lor  \neg q) \\
+  \neg (p \lor  q) &\iff (\neg p \land \neg q)
+  \end{align}
+  $$
+
+- **transitivity**
+
+  $$
+  \begin{align}
+  (p \longrightarrow q) \land (q \longrightarrow r) &\implies (p \longrightarrow r) \\
+  (p \longleftrightarrow q) \land (q \longleftrightarrow r) &\implies (p \longleftrightarrow r)
+  \end{align}
+  $$
+
+- **Modus Ponens**
+
+  $$
+  \begin{align}
+  (p \longrightarrow q) \land p \implies q
+  \end{align}
+  $$
+
+- **Modus Tollens**
+
+  $$
+  \begin{align}
+  (p \longrightarrow q) \land \neg q \implies \neg p
+  \end{align}
+  $$
+
+- **or-introduction (and-elimination)**
+
+  $$
+  \begin{align}
+  & \textit{"I had dinner" logically implies "I had dinner or lunch"} \nonumber \\
+  &\qquad p         \implies p \lor q \\
+  & \textit{"I had dinner \& lunch" logically implies "I had dinner"} \nonumber \\
+  &\qquad p \land q \implies p
+  \end{align}
+  $$
+
+- **or-elimination**
+
+  $$
+  \begin{align}
+  (p \lor q) \land (p \longrightarrow r) \land (q \longrightarrow r) \implies r
+  \end{align}
+  $$
