@@ -1,0 +1,1 @@
+- [assignment 1: propositions, predicates, & proofs](./01-prop_pred_logic/)
