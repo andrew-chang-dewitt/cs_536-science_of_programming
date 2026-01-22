@@ -1,1 +1,3 @@
-- [Jan 14, 2026: intro & propositional logic](0114-intro_prop_logic/)
+- [Jan 14, 2026: intro & propositional logic](./0114-intro_prop_logic/)
+- [Jan 16, 2026: more prop logic](./0116-more_prop_logic/)
+- [Jan 21, 2026: proofs & predicate logic](./0121-proof_of_truth_and_quantified_predicates/)
