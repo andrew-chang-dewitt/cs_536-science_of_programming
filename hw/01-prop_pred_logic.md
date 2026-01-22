@@ -217,6 +217,11 @@ $$
 
 :::
 
+> [!TODO]
+>
+> check these both w/ the test cases given! make sure to pay close attention to
+> off by one errors in defining the range for $\forall i.i<?$
+
 ### part (a)
 
 :::{.question}
@@ -232,6 +237,7 @@ $$
 
 $$
 \begin{aligned}
+\text{ReverseSorted}(b,n) \equiv \forall i.i < n - 1 \implies b[i] \ge b[i + 1]
 \end{aligned}
 $$
 
@@ -241,7 +247,7 @@ $$
 
 > Define a predicate function 𝑅𝑒𝑝𝑒𝑎𝑡𝑠(𝑏, 𝑚) which is 𝑇𝑟𝑢𝑒 if and only if the
 > first 𝑚 elements of integer array 𝑏 match the second 𝑚 elements of 𝑏, in
-> other word, 𝑏[0] = 𝑏[𝑚], 𝑏[1] = 𝑏[𝑚 + 1],…, 𝑏[𝑚 − 1] = 𝑏[2 ∗ 𝑚 − 1]. You may
+> other words, 𝑏[0] = 𝑏[𝑚], 𝑏[1] = 𝑏[𝑚 + 1],…, 𝑏[𝑚 − 1] = 𝑏[2 ∗ 𝑚 − 1]. You may
 > assume that 𝑚 is positive and 2 ∗ 𝑚 − 1 is less than length array 𝑏, so you
 > don’t need to worry about the domain of 𝑚. For example, if
 > 𝑏 = (1, 3, 5, 1, 3, 5), then 𝑅𝑒𝑝𝑒𝑎𝑡𝑠(𝑏, 3) is 𝑇𝑟𝑢𝑒 but 𝑅𝑒𝑝𝑒𝑎𝑡𝑠(𝑏, 2) is 𝐹𝑎𝑙𝑠𝑒
@@ -250,6 +256,7 @@ $$
 
 $$
 \begin{aligned}
+\text{Repeats}(b,m) \equiv \forall i.i < m - 1 \implies b[i] = b[i + m]
 \end{aligned}
 $$
 
