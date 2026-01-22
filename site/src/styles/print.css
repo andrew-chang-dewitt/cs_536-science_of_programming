@@ -5,7 +5,7 @@
  */
 @media print {
   :root {
-    font-size: 11pt;
+    font-size: 10pt;
     background-color: white !important;
   }
 
@@ -47,7 +47,7 @@
 }
 
 @page {
-  margin: 0.5in;
+  margin: 0.5in !important;
 }
 
 /*

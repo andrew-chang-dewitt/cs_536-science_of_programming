@@ -16,7 +16,7 @@
 @import "./print.css";
 @import "./table.css";
 @import "./code.css";
-@import "./katex.min.css";
+@import "../../node_modules/katex/dist/katex.css";
 @import "./math.css";
 @import "./alerts.css";
 
@@ -97,13 +97,15 @@ blockquote {
   font-weight: var(--fonts-weight-serif-semi-bold);
 }
 
-blockquote.reply {
+.reply > blockquote,
+.question > blockquote {
   border-left: medium solid var(--colors-light-dark);
   margin-left: 0;
   padding-left: 2rem;
   color: var(--colors-light-dark);
   font-family: var(--fonts-family-serif);
   font-weight: var(--fonts-weight-serif-light);
+  font-style: italic;
 }
 
 em {
