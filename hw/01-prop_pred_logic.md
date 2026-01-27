@@ -1,3 +1,5 @@
+<section>
+
 :::hgroup{.titlegroup}
 
 # assignment 1
@@ -16,6 +18,8 @@ CS 536
 > here are propositional variables.
 
 :::
+
+<section>
 
 ### part (a)
 
@@ -42,6 +46,9 @@ $$
 \end{aligned}
 $$
 
+</section>
+<section>
+
 ### part (b)
 
 :::{.question}
@@ -52,6 +59,9 @@ $$
 
 False, because $p$ is bound twice in $\{x = 2, p = 2, p = T \}$
 
+</section>
+<section>
+
 ### part (c)
 
 :::{.question}
@@ -61,6 +71,9 @@ False, because $p$ is bound twice in $\{x = 2, p = 2, p = T \}$
 :::
 
 False, because $p \not \in \empty$
+
+</section>
+<section>
 
 ### part (d)
 
@@ -94,6 +107,9 @@ $$
 \end{aligned}
 $$
 
+</section>
+<section>
+
 ### part (e)
 
 :::{.question}
@@ -104,6 +120,10 @@ $$
 
 False, because $p \lor \neg p$ is a tautology
 
+</section>
+</section>
+<section>
+
 ## Question 2
 
 :::{.question}
@@ -111,6 +131,8 @@ False, because $p \lor \neg p$ is a tautology
 > Let 𝑝1 and 𝑝2 be two propositions or predicates.
 
 :::
+
+<section>
 
 ### part (a)
 
@@ -141,6 +163,9 @@ $$
 
 however, $p1 \equiv p2$ does not.
 
+</section>
+<section>
+
 ### part (b)
 
 :::{.question}
@@ -151,6 +176,10 @@ however, $p1 \equiv p2$ does not.
 
 Yes, because $p1 \longleftrightarrow p2 \iff F$ means that either $p1 \longrightarrow p2$ or $p2 \longrightarrow p1$ must be false, thus $p1$ & $p2$ must be semantically different. Consider that with the fact that if two propositions _are_ syntactically equal, then they are implied to be semantically equal, we can conclude that $p1 \not \equiv p2$ in this case.
 
+</section>
+</section>
+<section>
+
 ## Question 3
 
 :::{.question}
@@ -158,6 +187,8 @@ Yes, because $p1 \longleftrightarrow p2 \iff F$ means that either $p1 \longright
 > Prove the following logical equivalences. You can either use Truth Tables or the rules provided in Lecture 2 to prove them.
 
 :::
+
+<section>
 
 ### part (a)
 
@@ -194,6 +225,9 @@ $$
 $$
 -->
 
+</section>
+<section>
+
 ### part (b)
 
 :::{.question}
@@ -209,6 +243,9 @@ $$
 | T   | **F** | F                               | F        | T                                    | **F**           |
 | T   | **T** | T                               | F        | T                                    | **T**           |
 
+</section>
+<section>
+
 ## Question 4
 
 :::{.question}
@@ -217,10 +254,7 @@ $$
 
 :::
 
-> [!TODO]
->
-> check these both w/ the test cases given! make sure to pay close attention to
-> off by one errors in defining the range for $\forall i.i<?$
+<section>
 
 ### part (a)
 
@@ -241,6 +275,31 @@ $$
 \end{aligned}
 $$
 
+tested against examples $b= (4,3,4,3)$ with $\text{ReverseSorted}(b,1)$
+, $\text{ReverseSorted}(b,2)$, & $\text{ReverseSorted}(b,3)$:
+
+$$
+\begin{aligned}
+\text{ReverseSorted}(b,1) &\equiv \forall i.i < 0 \implies b[i] \ge b[i + 1] \\
+                          &\equiv \forall i \in \empty \\
+                          &\equiv T \\
+\\
+\text{ReverseSorted}(b,2) &\equiv \forall i.i < 2 - 1 \implies b[i] \ge b[i + 1] \\
+                          &\equiv b[0] \ge b[1] \\
+                          &\equiv 4 \ge 3 \\
+                          &\equiv T \\
+\\
+\text{ReverseSorted}(b,3) &\equiv \forall i.i < 3 - 1 \implies b[i] \ge b[i + 1] \\
+                          &\equiv ( b[0] \ge b[1] ) \land ( b[1] \ge [b2] ) \\
+                          &\equiv ( 4 \ge 3 ) \land ( 3 \ge 4 ) \\
+                          &\equiv T \land F \\
+                          &\equiv  F \\
+\end{aligned}
+$$
+
+</section>
+<section>
+
 ### part (b)
 
 :::{.question}
@@ -256,7 +315,29 @@ $$
 
 $$
 \begin{aligned}
-\text{Repeats}(b,m) \equiv \forall i.i < m - 1 \implies b[i] = b[i + m]
+\text{Repeats}(b,m) \equiv \forall i.i < m \implies b[i] = b[i + m]
 \end{aligned}
 $$
 
+tested against examples $b= (1, 3, 5, 1, 3, 5)$ with $\text{Repeats}(b,2)$ & $\text{Repeats}(b,3)$:
+
+$$
+\begin{aligned}
+\text{Repeats}(b,2) &\equiv \forall i.i < 2 \implies b[i] = b[i + m] \\
+                    &\equiv ( b[0] = b[0 + 2] ) \land ( b[1] = b[1 + 2] ) \\
+                    &\equiv ( b[0] = b[2] ) \land ( b[1] = b[3] ) \\
+                    &\equiv ( 1 = 5 ) \land ( 3 = 1 ) \\
+                    &\equiv F \land T \\
+                    &\equiv F \\
+\\
+\text{Repeats}(b,3) &\equiv \forall i.i < 3 \implies b[i] = b[i + m] \\
+                    &\equiv ( b[0] = b[0 + 3] ) \land ( b[1] = b[1 + 3] ) \\
+                    &\equiv ( b[0] = b[3] ) \land ( b[1] = b[4] ) \land ( b[2] = b[5] ) \\
+                    &\equiv ( 1 = 1 ) \land ( 3 = 3 ) \land ( 5 = 5 ) \\
+                    &\equiv T \land T \land T \\
+                    &\equiv T \\
+\end{aligned}
+$$
+
+</section>
+</section>
