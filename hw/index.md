@@ -1,1 +1,2 @@
 - [assignment 1: propositions, predicates, & proofs](./01-prop_pred_logic/)
+- [assignment 2: state & updating state](./02-state_updates/)
