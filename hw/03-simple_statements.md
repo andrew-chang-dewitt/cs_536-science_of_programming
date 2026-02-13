@@ -26,6 +26,14 @@ CS 536
 
 $$
 \begin{aligned}
+x \coloneqq 0;\space
+i \coloneqq 0;\space
+\text{while}\space
+i < \text{size}(b)
+\space\text{do}\space
+x \coloneqq x + b[i];\space
+i \coloneqq i + 1
+\space\text{od}\space
 \end{aligned}
 $$
 
@@ -91,7 +99,7 @@ $$
 
 :::{.question}
 
-> Calculate 𝑀(𝑊,𝜎1), where 𝜎1(𝑥) = 4 and 𝜎1(𝑝) = T
+> Calculate 𝑀(𝑊,𝜎<sub>1</sub>), where 𝜎<sub>1</sub>(𝑥) = 4 and 𝜎<sub>1</sub>(𝑝) = T
 
 :::
 
