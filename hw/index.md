@@ -1,2 +1,4 @@
 - [assignment 1: propositions, predicates, & proofs](./01-prop_pred_logic/)
 - [assignment 2: state & updating state](./02-state_updates/)
+- [assignment 3: simple statements](./03-simple_statements/)
+- [assignment 4: state collections, nondeterminism, & satisfaction](./04-state_coll_nondeterm_satisfaction/)
