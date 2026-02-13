@@ -16,6 +16,8 @@ CS 536
 
 :::
 
+<section>
+
 ### part (a)
 
 :::{.question}
@@ -37,18 +39,39 @@ i \coloneqq i + 1
 \end{aligned}
 $$
 
+</section>
+<section>
+
 ### part (b)
 
 :::{.question}
 
 > `while (x != 1) {if (x % 2 == 0) { x = x/2; } else { x++; }}`
 
+<!--
+   while B do if B' then S else S' fi od
+-->
+
 :::
 
 $$
 \begin{aligned}
+\text{while}\space
+x \neq 1 \space
+\text{do}\space
+\text{if}\space
+x \% 2 = 0 \space
+\text{then}\space
+x \coloneqq x / 2 \space
+\text{else}\space
+x \coloneqq x + 1 \space
+\text{fi}\space
+\text{od}\space
 \end{aligned}
 $$
+
+</section>
+<section>
 
 ## Question 2
 
@@ -60,6 +83,8 @@ $$
 
 :::
 
+<section>
+
 ### part (a)
 
 :::{.question}
@@ -70,8 +95,29 @@ $$
 
 $$
 \begin{aligned}
+&\lang
+    \text{if}\space
+        x < 2 \space
+    \text{then}\space
+        x \coloneqq y + 1; \space
+        w \coloneqq x + 2 \space
+    \text{fi}, \space
+    \{ x = 3, y = 3, w = 4 \}
+\rang \\
+&\quad\quad\quad \longrightarrow \lang
+    skip, \space
+    \{ x = 3, y = 3, w = 4 \}
+\rang &&
+\htmlClass{hljs-comment}{\textit{// $\sigma$(x) = 3 > 2}} \\
+&\quad\quad\quad \longrightarrow \lang
+    E, \space
+    \{ x = 3, y = 3, w = 4 \}
+\rang
 \end{aligned}
 $$
+
+</section>
+<section>
 
 ### part (b)
 
@@ -83,8 +129,27 @@ $$
 
 $$
 \begin{aligned}
+&\lang
+    x \coloneqq y + 1; \space
+    y \coloneqq x + 1, \space
+    \{ x = 3, y = 3, w = 4 \}
+\rang \\
+&\quad\quad\quad \longrightarrow \lang
+    y \coloneqq x + 1, \space
+    \{ x = 4, y = 3, w = 4 \}
+\rang &&
+\htmlClass{hljs-comment}{\textit{// $\sigma$[x $\mapsto$ $\sigma$(y + 1)]}} \\
+&\quad\quad\quad \longrightarrow \lang
+    E, \space
+    \{ x = 4, y = 5, w = 4 \}
+\rang &&
+\htmlClass{hljs-comment}{\textit{// $\sigma$[y $\mapsto$ $\sigma$(x + 1)]}} \\
 \end{aligned}
 $$
+
+</section>
+</section>
+<section>
 
 ## Question 3
 
@@ -94,6 +159,8 @@ $$
 > the following denotational semantics
 
 :::
+
+<section>
 
 ### part (a)
 
@@ -105,8 +172,12 @@ $$
 
 $$
 \begin{aligned}
+M(W,\sigma_1) &\longrightarrow \{ \sigma_1 \} && \htmlClass{hljs-comment}{\textit{// B is false, $\sigma$(x) = 4 < 3}} \\
 \end{aligned}
 $$
+
+</section>
+<section>
 
 ### part (b)
 
@@ -118,8 +189,24 @@ $$
 
 $$
 \begin{aligned}
+\sigma_2 \models (x = 1) \land p &\iff (\sigma_2(x) = 1) \land \sigma_2(p) \\
+                                 &\implies \{ x = 1, p = T \} \subseteq \sigma_2 \\
+\\
+M(W,\sigma_2)           &\longrightarrow^0 M(W,\{ x = 1, p = T \})
+                             && \htmlClass{hljs-comment}{\textit{since $W$ is in terms of $x$ \& $p$, this}} \\
+                        &    && \htmlClass{hljs-comment}{\textit{is a good enough definition of $\sigma_2$}} \\
+                        &\longrightarrow M(S,\{ x = 1, p = T \})
+                             && \htmlClass{hljs-comment}{\textit{// B is true, $\sigma_2$(x) = 1 < 3}} \\
+                        &\longrightarrow M(p \coloneqq p \land (x > 1),\{ x = 3, p = T \})
+                             && \htmlClass{hljs-comment}{\textit{// $\sigma_2$[x $\mapsto$ $\sigma_2$(x) + 2]}} \\
+                        &\longrightarrow \{\{ x = 3, p = T \}\}
+                             && \htmlClass{hljs-comment}{\textit{// $\sigma_2$[p $\mapsto$ T $\land$ (3 > 1)]}} \\
 \end{aligned}
 $$
+
+</section>
+</section>
+<section>
 
 ## Question 4
 
@@ -129,6 +216,8 @@ $$
 > Calculate the following denotational semantics.
 
 :::
+
+<section>
 
 ### part (a)
 
@@ -140,8 +229,22 @@ $$
 
 $$
 \begin{aligned}
+M(W,\sigma_1)
+    &\longrightarrow^0 M(W,\{ x = 2, y = 2, b = (0,1,2) \}) \\
+    &\longrightarrow   M(S;W,\{ x = 2, y = 2, b = (0,1,2) \}) \\
+    &\longrightarrow   M(x \coloneqq x - 1; y \coloneqq b[y];W,\{ x = 2, y = 2, b = (0,1,2) \}) \\
+    &\longrightarrow   M(y \coloneqq b[y];W,\{ x = 1, y = 2, b = (0,1,2) \}) \\
+    &\longrightarrow   M(W,\{ x = 1, y = 2, b = (0,1,2) \}) \\
+    &\longrightarrow   M(S;W,\{ x = 1, y = 2, b = (0,1,2) \}) \\
+    &\longrightarrow   M(x \coloneqq y / x;W,\{ x = 1, y = 2, b = (0,1,2) \}) \\
+    &\longrightarrow   M(W,\{ x = 2, y = 2, b = (0,1,2) \}) && \htmlClass{hljs-comment}{\textit{// back to where we started}} \\
+    &\longrightarrow^* M(W,\sigma_1) && \htmlClass{hljs-comment}{\textit{// this is a cycle}} \\
+    &\longrightarrow^* \{ \bot_d \} \space_\blacksquare && \htmlClass{hljs-comment}{\textit{// diverges}}
 \end{aligned}
 $$
+
+</section>
+<section>
 
 ### part (b)
 
@@ -153,5 +256,22 @@ $$
 
 $$
 \begin{aligned}
+M(W,\sigma_2)
+    &\longrightarrow^0 M(W,\{ x = 8, y = 2, b = (4,2,0) \}) \\
+    &\longrightarrow   M(S;W,\{ x = 8, y = 2, b = (4,2,0) \}) \\
+    &\longrightarrow   M(x \coloneqq x - 1; y \coloneqq b[y];W,\{ x = 8, y = 2, b = (4,2,0) \}) \\
+    &\longrightarrow   M(y \coloneqq b[y];W,\{ x = 7, y = 2, b = (4,2,0) \}) \\
+    &\longrightarrow   M(W,\{ x = 7, y = 0, b = (4,2,0) \}) \\
+    &\longrightarrow   M(S;W,\{ x = 7, y = 0, b = (4,2,0) \}) \\
+    &\longrightarrow   M(x \coloneqq x - 1; y \coloneqq b[y];W,\{ x = 7, y = 0, b = (4,2,0) \}) \\
+    &\longrightarrow   M(y \coloneqq b[y];W,\{ x = 6, y = 0, b = (4,2,0) \}) \\
+    &\longrightarrow   M(W,\{ x = 6, y = 4, b = (4,2,0) \}) \\
+    &\longrightarrow   M(S;W,\{ x = 6, y = 4, b = (4,2,0) \}) \\
+    &\longrightarrow   M(x \coloneqq x - 1; y \coloneqq b[y];W,\{ x = 6, y = 4, b = (4,2,0) \}) \\
+    &\longrightarrow   M(y \coloneqq b[y];W,\{ x = 5, y = 4, b = (4,2,0) \}) && \htmlClass{hljs-comment}{\textit{// $\sigma$(b[4]) -> out of bounds}} \\
+    &\longrightarrow   \{ \bot_e \} \space_\blacksquare && \htmlClass{hljs-comment}{\textit{// hereditary failure}}\\
 \end{aligned}
 $$
+
+</section>
+</section>
