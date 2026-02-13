@@ -30,4 +30,8 @@ function makeRenderer(extensions?: ExtBuilder[]): RenderFn {
   }
 }
 
-export default makeRenderer([markedKatex, markedAlert, createDirectives])
+export default makeRenderer([
+  () => markedKatex({ trust: true }),
+  markedAlert,
+  createDirectives,
+])
