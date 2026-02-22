@@ -2,11 +2,13 @@
   --colors-action: #e69d45; /* orange */
   --colors-action-dark: #ab6400;
   --colors-dark: #373f42; /* grey */
-  --colors-dark-light: #e4ebeb; /* light-grey */
-  --colors-light-dark: #83898c; /* alternate light-grey */
+  --colors-dark-light: #83898c; /* alternate light-grey */
+  --colors-dark-light-alternate: #e4ebeb; /* light-grey */
   --colors-light: #fffdfa; /* white-ish */
   --colors-accent1: #308695; /* blue */
   --colors-accent2: #d45769; /* red */
+  --colors-accent3: #657d1f; /* green */
+  --colors-accent4: #523cd7; /* purple */
   --colors-highlight: #66523d; /*orange, under-saturated */
 }
 
@@ -15,11 +17,17 @@
     --colors-action-dark: #e69d45; /* orange */
     --colors-action: #ab6400;
     --colors-light: #373f42; /* grey */
-    --colors-light-dark: #e4ebeb; /* light-grey */
-    --colors-dark-light: #83898c; /* alternate light-grey */
+    --colors-dark-light: #e4ebeb; /* light-grey */
+    --colors-dark-light-alternate: #83898c; /* alternate light-grey */
     --colors-dark: #fffdfa; /* white-ish */
     --colors-accent1: #308695; /* blue */
     --colors-accent2: #d45769; /* red */
     --colors-highlight: #66523d; /*orange, under-saturated */
+  }
+}
+
+@media print {
+  :root {
+    --colors-light: #ffffff;
   }
 }

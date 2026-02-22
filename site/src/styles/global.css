@@ -99,10 +99,10 @@ blockquote {
 
 .reply > blockquote,
 .question > blockquote {
-  border-left: medium solid var(--colors-light-dark);
+  border-left: medium solid var(--colors-dark-light);
   margin-left: 0;
   padding-left: 2rem;
-  color: var(--colors-light-dark);
+  color: var(--colors-dark-light);
   font-family: var(--fonts-family-serif);
   font-weight: var(--fonts-weight-serif-light);
   font-style: italic;

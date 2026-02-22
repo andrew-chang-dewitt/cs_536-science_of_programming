@@ -21,6 +21,7 @@
     "marked-alert": "^2.1.2",
     "marked-directive": "^1.0.7",
     "marked-katex-extension": "^5.1.5",
+    "postcss-env-function": "^6.0.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "vite": "^7.0.0"
