@@ -121,6 +121,8 @@ $$
 
 :::
 
+True
+
 $$
 \begin{aligned}
 x > 1 \implies x \neq 1 &\implies \sigma \models x \neq 1 \\
@@ -143,37 +145,145 @@ $$
 
 :::
 
-<section>
+definitions of denotational semantics for `if - fi`
+
+$$
+\begin{align}
+&\text{IF}' \equiv \text{if}\; B_1 \rarr S_1 \square
+                              B_2 \rarr S_2 \square
+                              \dotsb \square
+                              B_n \rarr S_n \square
+                \;\text{fi} \notag \\
+
+&M(\text{IF}', \sigma') = \begin{cases}
+                            \{\bot_e\},                           &\text{if}\; \sigma'(B_1 \lor B_2 \lor B_n) = F \\
+                            \{M(S_i, \sigma') | \sigma'(B_i) = T\}, &otherwise
+                        \end{cases} \tag{2.1}\\
+\end{align}
+$$
+
+& `do - od`:
+
+$$
+\begin{align}
+&\text{DO}' \equiv \text{do}\; B_1 \rarr S_1 \square
+                              B_2 \rarr S_2 \square
+                              \dotsb \square
+                              B_n \rarr S_n \square
+                \;\text{od} \notag \\
+
+&M(\text{DO}', \sigma') =
+    \begin{cases}
+        \{\sigma'\},
+            &\text{if}\; \sigma'(B_1 \lor B_2 \lor B_n) = F \\
+        \{M(\text{DO}', M(S_i, \sigma')) | \sigma'(B_i) = T\},
+            &otherwise
+   \end{cases} \tag{2.2}\\
+\end{align}
+$$
 
 ### part (a)
 
 :::{.question}
 
-> Let 𝐷𝑂 ≡ 𝐝𝐨 𝑥 >𝑦 →𝑥 ≔𝑥−1 ◻𝑥>𝑦→𝑦≔𝑦+1 ◻𝑥+𝑦=4→𝑥≔𝑦/𝑥 ◻𝑥+𝑦=4→𝑥≔ 𝑥/𝑦 𝐨𝐝, and let
-> 𝜎<sub>1</sub> = {𝑥 = 3, 𝑦 = 1}. Calculate 𝑀(𝐷𝑂,𝜎<sub>1</sub>) and show your
-> work.
+> Let 𝐷𝑂 ≡ 𝐝𝐨 𝑥 > 𝑦 → 𝑥 ≔ 𝑥 − 1 ◻ 𝑥 > 𝑦 → 𝑦 ≔ 𝑦 + 1 ◻ 𝑥 + 𝑦 = 4 → 𝑥 ≔ 𝑦/𝑥 ◻ 𝑥 + 𝑦 = 4 → 𝑥 ≔ 𝑥/𝑦 𝐨𝐝, \
+> and let 𝜎<sub>1</sub> = {𝑥 = 3, 𝑦 = 1}. \
+> Calculate 𝑀(𝐷𝑂,𝜎<sub>1</sub>) and show your work.
 
 :::
 
+conditions, $B_i$, & statements, $S_i$, from `DO`:
+
 $$
 \begin{aligned}
+B_1 &\coloneqq x > y,     &S_1 &\coloneqq x \coloneqq x - 1, \\
+B_2 &\coloneqq B_1,       &S_2 &\coloneqq y \coloneqq y + 1, \\
+B_3 &\coloneqq x + y = 4, &S_3 &\coloneqq x \coloneqq y / x, \\
+B_4 &\coloneqq B_3,       &S_4 &\coloneqq x \coloneqq x / y, \\
 \end{aligned}
 $$
 
-</section>
+denotational semantics, by iteration of `DO`:
+
+$$
+\begin{aligned}
+    &     &M&(\text{DO}, \{x = 3, y = 1\})                \\
+\\
+    &=    &\{ &M(\text{DO}, \{x = 2, y = 1\}),           \\
+    &\quad&   &M(\text{DO}, \{x = 3, y = 2\}),           \\
+    &\quad&   &M(\text{DO}, \{x = \frac{1}{3}, y = 1\}), \\
+    &\quad&   &M(\text{DO}, \{x = 3, y = 1\}) \}
+  && \htmlClass{hljs-comment}{\textit{all guards true}}  \\
+    &     &   &
+  && \htmlClass{hljs-comment}{\textit{iteration 1 complete, by (2.2)}} \\
+\\
+    &=    &\{ &\{ \{x = 2, y = 1\} \},
+      && \htmlClass{hljs-comment}{\textit{$\sigma(B_3 \lor B_4) = F$}} \\
+    &\quad&   &\{ M(\text{DO},\{x = 1, y = 1\}),M(\text{DO},\{x = 2, y = 2\})\} \},
+      && \htmlClass{hljs-comment}{\textit{$\sigma(B_1 \lor B_2) = T$}} \\
+    &\quad&   &\{ \{x = 3, y = 2\} \},
+      && \htmlClass{hljs-comment}{\textit{$\sigma(B_3 \lor B_4) = F$}} \\
+    &\quad&   &\{ M(\text{DO},\{x = 2, y = 2\}),M(\text{DO},\{x = 3, y = 3\})\} \},
+      && \htmlClass{hljs-comment}{\textit{$\sigma(B_1 \lor B_2) = T$}} \\
+    &\quad&   &\{ \{x = \frac{1}{3}, y = 1\} \},
+      && \htmlClass{hljs-comment}{\textit{$\sigma(B_1 \lor B_2 \lor B_3 \lor B_4) = F$}} \\
+    &\quad&   &\{\bot_d\} \}
+
+  && \htmlClass{hljs-comment}{\textit{$\{x = 3, y = 1\}$ is a cycle}}          \\
+    &=    &\{ &\{x = 2, y = 1\}, \{x = 3, y = 2\}, \{ x = \frac{1}{3}, y = 1 \}, \bot_d
+  && \htmlClass{hljs-comment}{\textit{flatten \& deduplicate}} \\
+    &\quad&   &M(\text{DO},\{x = 1, y = 1\}), \\
+    &\quad&   &M(\text{DO},\{x = 2, y = 2\}), \\
+    &\quad&   &M(\text{DO},\{x = 3, y = 3\}) \}
+  && \htmlClass{hljs-comment}{\textit{iteration 2 complete}} \\
+\\
+    &=    &\{ &\{x = 2, y = 1\}, \{x = 3, y = 2\}, \{ x = \frac{1}{3}, y = 1 \}, \bot_d \\
+    &\quad&   &\{\{x = 1, y = 1\}\},
+  && \htmlClass{hljs-comment}{\textit{all guards false for \{x = 1, y = 1\}}} \\
+    &\quad&   &\{M(\text{DO},\{x = \frac{2}{2}, y = 2\}),M(\text{DO},\{x = \frac{2}{2}, y = 2\})\},
+  && \htmlClass{hljs-comment}{\textit{$B_3 \land B_4 = T$}} \\
+    &\quad&   &\{\{x = 3, y = 3\}\} \},
+  && \htmlClass{hljs-comment}{\textit{all guards false for \{x = 3, y = 3\}}} \\
+
+    &=    &\{ &\{x = 2, y = 1\}, \{x = 3, y = 2\}, \{ x = \frac{1}{3}, y = 1 \}, \bot_d
+  && \htmlClass{hljs-comment}{\textit{flatten \& deduplicate}} \\
+    &\quad&   &\{x = 1, y = 1\}, \{x = 3, y = 3\}, \\
+    &\quad&   &M(\text{DO},\{x = 1, y = 2\}), \\
+    &\quad&   &M(\text{DO},\{x = 1, y = 2\}) \}
+  && \htmlClass{hljs-comment}{\textit{iteration 3 complete}} \\
+\\
+    &=    &\{ &\{x = 2, y = 1\}, \{x = 3, y = 2\}, \{ x = \frac{1}{3}, y = 1 \}, \bot_d \\
+    &\quad&   &\{x = 1, y = 1\}, \{x = 3, y = 3\}, \\
+    &\quad&   &\{x = 1, y = 2\} \} \space_\blacksquare
+  && \htmlClass{hljs-comment}{\textit{all guards false for \{ x = 1, y =2 \}}} \\
+\end{aligned}
+$$
+
 <section>
 
 ### part (b)
 
 :::{.question}
 
-> Let 𝐼𝐹 ≡ 𝐢𝐟 𝑥 > 𝑦 → 𝑥 ≔𝑥−1 ◻𝑥 >𝑦→𝑦≔𝑦+1 ◻𝑥+𝑦=4→𝑥≔𝑦/𝑥 ◻𝑥+𝑦=4→𝑥≔ 𝑥/𝑦 𝐟𝐢, and let
-> 𝜎2(𝑥) = 𝜎2(𝑦) = 2. Calculate 𝑀(𝐼𝐹,𝜎2) and show your work.
+> Let 𝐼𝐹 ≡ 𝐢𝐟 𝑥 > 𝑦 → 𝑥 ≔𝑥−1 ◻𝑥 >𝑦→𝑦≔𝑦+1 ◻𝑥+𝑦=4→𝑥≔𝑦/𝑥 ◻𝑥+𝑦=4→𝑥≔ 𝑥/𝑦 𝐟𝐢, \
+> and let 𝜎<sub>2</sub>(𝑥) = 𝜎<sub>2</sub>(𝑦) = <sub>2</sub>. \
+> Calculate 𝑀(𝐼𝐹,𝜎<sub>2</sub>) and show your work.
 
 :::
 
 $$
 \begin{aligned}
+&     &M&(\text{IF}, \{x = 2, y = 2\})                \\
+\\
+&=    &\{ &\{\bot_e\},                     && \htmlClass{hljs-comment}{\textit{$\sigma_2(B_1) = F$}} \\
+&\quad&   &\{\bot_e\},                     && \htmlClass{hljs-comment}{\textit{$\sigma_2(B_2) = T$}} \\
+&\quad&   &M(x:= y/x, \{x = 2, y = 2\}),   && \htmlClass{hljs-comment}{\textit{$\sigma_2(B_3) = T$}} \\
+&\quad&   &M(x:= x/y, \{x = 2, y = 2\}) \} && \htmlClass{hljs-comment}{\textit{$\sigma_2(B_4) = T$}} \\
+&     &   &
+  && \htmlClass{hljs-comment}{\textit{by (2.1)}} \\
+\\
+&=    &\{ &\bot_e, \{x = 1, y = 2\} \} \space_\blacksquare
+  && \htmlClass{hljs-comment}{\textit{flatten \& deduplicate}} \\
 \end{aligned}
 $$
 
@@ -200,10 +310,7 @@ $$
 
 :::
 
-$$
-\begin{aligned}
-\end{aligned}
-$$
+False, `if - fi` can have 2 or more branches that can evaluate to the same state.
 
 </section>
 <section>
@@ -216,10 +323,9 @@ $$
 
 :::
 
-$$
-\begin{aligned}
-\end{aligned}
-$$
+False, while $\sigma \not \models_\text{tot} \{p\} S \{q\} \implies \sigma \models_\text{tot} p$,
+this partially correct version has additional possible reasons that $\sigma$
+does not satisfy the triple, including that the S terminates in $\bot$.
 
 </section>
 <section>
@@ -228,14 +334,13 @@ $$
 
 :::{.question}
 
-> If 𝜎 ⊨𝑡𝑜𝑡 {𝑝} 𝑆 {𝑞}, then 𝜎 ⊨ 𝑝.
+> If 𝜎 ⊨<sub>𝑡𝑜𝑡</sub> {𝑝} 𝑆 {𝑞}, then 𝜎 ⊨ 𝑝.
 
 :::
 
-$$
-\begin{aligned}
-\end{aligned}
-$$
+False, for example the
+statement $\{x = -5\} \models_\text{tot} \{x > 0\} x\coloneqq x + 1 \{x > 0\}$
+is True, because $\{x = -5\} \not \models \{x > 0\}$.
 
 </section>
 <section>
@@ -248,10 +353,7 @@ $$
 
 :::
 
-$$
-\begin{aligned}
-\end{aligned}
-$$
+False, if $\bot \in M(S,\sigma)$, then $M(S,\sigma) \not \models q$.
 
 </section>
 <section>
@@ -260,14 +362,11 @@ $$
 
 :::{.question}
 
-> If 𝜎 ⊨𝑡𝑜𝑡 {𝑝} 𝑆 {𝑞}, then 𝜎 ⊨ {𝑝} 𝑆 {𝑞}.
+> If 𝜎 ⊨<sub>𝑡𝑜𝑡</sub> {𝑝} 𝑆 {𝑞}, then 𝜎 ⊨ {𝑝} 𝑆 {𝑞}.
 
 :::
 
-$$
-\begin{aligned}
-\end{aligned}
-$$
+True, because $(M(S,\sigma) - \bot) \subseteq M(S,\sigma)$.
 
 </section>
 </section>
@@ -288,15 +387,17 @@ $$
 
 :::{.question}
 
-> Let ⊥𝑒∉ 𝑀(𝑆,𝜎), where 𝑆 ≡ 𝑥 ∶= 𝑠𝑞𝑟𝑡(𝑥) / 𝑏[𝑥] and 𝜎(𝑏) = (3,0,−2,4). What are
+> Let ⊥<sub>𝑒</sub> ∉ 𝑀(𝑆,𝜎), where 𝑆 ≡ 𝑥 ∶= 𝑠𝑞𝑟𝑡(𝑥) / 𝑏[𝑥] and 𝜎(𝑏) = (3,0,−2,4). What are
 > the possible values of 𝜎(𝑥)?
 
 :::
 
-$$
-\begin{aligned}
-\end{aligned}
-$$
+- because any value for x below 0 or above 3 would cause the expression $b[x]$ to evaluate
+  to $\bot_e$ for index out of bounds, we know $x \in [0,3]$.
+- additionally, if $x = 1$, then $b[x] = 0$, which means that $\text{sqrt}(x) / b[x]$ would
+  evaluate to $\bot_e$ as well for division by zero.
+
+these two conditions mean that $\sigma(x) \in \{0, 2, 3\}$.
 
 </section>
 <section>
@@ -305,15 +406,14 @@ $$
 
 :::{.question}
 
-> Let ⊥𝑒∉ 𝑀(𝑆,𝜎), where 𝑆 ≡ 𝐢𝐟 𝑥 > 4 → 𝑦 ≔ 1/𝑥 □ 𝑥 < 1 → 𝑦 ≔ 𝑠𝑞𝑟𝑡(𝑥) 𝐟𝐢 . What
+> Let ⊥<sub>𝑒</sub> ∉ 𝑀(𝑆,𝜎), where 𝑆 ≡ 𝐢𝐟 𝑥 > 4 → 𝑦 ≔ 1/𝑥 □ 𝑥 < 1 → 𝑦 ≔ 𝑠𝑞𝑟𝑡(𝑥) 𝐟𝐢 . What
 > are the possible values of 𝜎(𝑥)?
 
 :::
 
-$$
-\begin{aligned}
-\end{aligned}
-$$
+assuming $\text{sqrt}(x)$ evaluates to $\bot_e$ for any $x < 0$, then the second branch of $S$ requires $x = 0$ as the only valid value for that branch. additionally, neither branch changes the value of $x$.
+
+as such, the possible values are $x = 0 \land x > 1$.
 
 </section>
 <section>
@@ -323,15 +423,12 @@ $$
 :::{.question}
 
 > Let 𝜎 ⊨ {𝑠𝑞𝑟𝑡(𝑥) ≠ 1} 𝑥 ≔ 1/𝑥 {𝐹}. What are the possible values of 𝜎(𝑥)?
->
-> :::
 
-$$
-\begin{aligned}
-\end{aligned}
+:::
 
-
-$$
+because this is only _partial_ correctness
+, $M(x \coloneqq 1/x,\sigma) - \bot = \empty$ when $\sigma(x) = 0$, which
+satisfies any postcondition (including `{F}`).
 
 </section>
 <section>
@@ -340,19 +437,18 @@ $$
 
 :::{.question}
 
-> Let 𝜎 ⊨ {𝑥 ≠ 0} 𝐰𝐡𝐢𝐥𝐞 𝑥 ≠ 0 𝐝𝐨 𝑥 ≔ 𝑥−2 𝐨𝐝 {𝑥 <0}, what are the possible
+> Let 𝜎 ⊨ {𝑥 ≠ 0} 𝐰𝐡𝐢𝐥𝐞 𝑥 ≠ 0 𝐝𝐨 𝑥 ≔ 𝑥−2 𝐨𝐝 {𝑥 < 0}, what are the possible
 > values of 𝜎(𝑥)?
 
 :::
 
-$$
+- $\sigma(x) = 0$ means $\sigma$ satisfies because the precondition $\{x \neq 0\}$ is not satisfied
+- additionally, $\sigma(x) < 0$ would give $M(S,\sigma) = \bot$, which satisfies the triple under
+  partial correctness
+- finally, $sigma(x) = 1$ would give an end state such that $\sigma(x) = -1$, satisfying the
+  postcondition as well
 
-\begin{aligned}
-\end{aligned}
-
-
-$$
+these together mean $x \in (-\infin,1]$.
 
 </section>
 </section>
-$$
