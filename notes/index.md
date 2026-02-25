@@ -7,4 +7,5 @@
 - [Feb 6, 2026: statements & evaluating programs](./0206-statements_eval_prog/)
 - [Feb 11, 2026: properties & consequences of bottom](./0211-prop_consq_of_bottom/)
 - [Feb 13, 2026: nondeterminism & strength of predicates](./0213-nondeterm_strength_pred/)
-- [Feb 18, 2026: hoare triples & the weakest precondition](./0218-hoare_triples/)
+- [Feb 18, 2026: hoare triples](./0218-hoare_triples/)
+- [Feb 20, 2026: weakest preconditions](./0220-weakest_precondition/)
