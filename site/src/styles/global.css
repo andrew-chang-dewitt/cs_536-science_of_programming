@@ -58,26 +58,38 @@ blockquote {
   font-weight: var(--fonts-weight-serif-normal-bold);
 }
 
+h1 .katex,
+h1 code,
 h1 {
   font-size: var(--fonts-size-extra-large);
 }
 
+h2 .katex,
+h2 code,
 h2 {
   font-size: var(--fonts-size-large);
 }
 
+h3 .katex,
+h3 code,
 h3 {
   font-size: var(--fonts-size-medium);
 }
 
+h4 .katex,
+h4 code,
 h4 {
   font-size: var(--fonts-size-regular-medium);
 }
 
+h5 .katex,
+h5 code,
 h5 {
   font-size: var(--fonts-size-regular);
 }
 
+h6 .katex,
+h6 code,
 h6 {
   font-size: var(--fonts-size-small);
 }
