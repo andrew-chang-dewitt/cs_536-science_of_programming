@@ -12,9 +12,14 @@ keywords:
   - "illinois tech"
 meta:
   byline: Andrew Chang-DeWitt
-  # published: "2026-02-18T10:00-06:00"
+  # published: "2026-02-13T10:40-06:00"
+  # updated: "2026-02-18T10:00-06:00"
 ---
 
 ## agenda
 
--
+- correctness as a _triple_
+- satisfaction & validity under _total_ correctness
+- satisfaction & validity under _partial_ correctness
+- creating valid triples
+- weakest preconditions
