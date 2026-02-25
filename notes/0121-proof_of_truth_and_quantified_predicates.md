@@ -286,6 +286,8 @@ a quantifier is a means of specifying a value (or values) for a
 variable in a predicate; e.g. given predicate $x^2 \ge x$, a quantifier
 for $x$ is $x \in \real$.
 
+:::
+
 some types of quantifiers:
 
 - **universal quantifier**
@@ -299,12 +301,6 @@ some types of quantifiers:
   an example: $\forall x \in \mathbb{Z}.x > 1 \longrightarrow x < x^2$
   means "for all integer $x$, if it is greater than 1, then it is
   smaller than its square"
-
-  > [!NOTE]
-  >
-  > we typically omit the set if it is understood by context, e.g. when
-  > we can know that $x \in \mathbb{Z}$, then we can just
-  > write $\forall x.x > 1 \longrightarrow x < x^2$
 
 - **existential quantifier**
 
@@ -324,6 +320,30 @@ some types of quantifiers:
   means $\exist x.p \land q$
   where $x$ appears in $p$ & $x$ is understood to
   be the variable we are quantifying over.
+
+:::
+
+> [!NOTE]
+>
+> we typically omit the set if it is understood by context, e.g. when
+> we can know that $x \in \mathbb{Z}$, then we can just
+> write $\forall x.x > 1 \longrightarrow x < x^2$
+
+:::
+
+predicate logic also has proof of truth, like we did for propositional
+logic above. all the same rules at the end of the [last
+lecture](./0116-more_prop_logic/) still apply, w/ the following change
+to **DeMorgan's Law**:
+
+$$
+\begin{align}
+(\neg \forall x.p) &\iff (\exist  x.\neg p) \\
+(\neg \exist  x.p) &\iff (\forall x.\neg p)
+\end{align}
+$$
+
+:::
 
 > [!ASIDE]
 >
@@ -361,18 +381,6 @@ some types of quantifiers:
 >    $???$
 >
 >    </details>
-
-predicate logic also has proof of truth, like we did for propositional
-logic above. all the same rules at the end of the [last
-lecture](./0116-more_prop_logic/) still apply, w/ the following change
-to **DeMorgan's Law**:
-
-$$
-\begin{align}
-(\neg \forall x.p) &\iff (\exist  x.\neg p) \\
-(\neg \exist  x.p) &\iff (\forall x.\neg p)
-\end{align}
-$$
 
 ## predicate functions
 
