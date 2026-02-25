@@ -295,12 +295,12 @@ that $\sigma(p) = False$.
 >
 >    $$
 >    \begin{align}
->    \because   &&        \sigma &\subset \tau \\
->               &&        \sigma &\models p \\
->    \\
->               &&           (1) &\implies x \in \tau \forall x \in \sigma \\
->               &&           (2) &\implies p \in \sigma \\
->    \therefore && (3) \land (4) &\implies p \in \tau \space_\blacksquare
+>           \sigma &\subset \tau \tag{a} \\
+>           \sigma &\models p \tag{b} \\
+>    \notag \\
+>              (a) &\implies x \in \tau \forall x \in \sigma \tag{c} \\
+>              (b) &\implies p \in \sigma \tag{d} \\
+>    (c) \land (d) &\implies p \in \tau \space_\blacksquare \notag
 >    \end{align}
 >    $$
 >
