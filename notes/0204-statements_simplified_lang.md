@@ -104,10 +104,10 @@ see below.
   \begin{aligned}
   &\lang W, \sigma \rang
       \rarr \begin{cases}
-                \lang W; s, \sigma \rang, &\sigma(e) = T \\
+                \lang s; W, \sigma \rang, &\sigma(e) = T \\
                 \lang E, \sigma \rang, &\text{otherwise}
             \end{cases}, \;\text{where} \\
-  &\quad\quad W \coloneqq \text{while}\; e \;\text{do}\; s \;\text{od} \\
+  &\quad\quad W \equiv \text{while}\; e \;\text{do}\; s \;\text{od} \\
   \end{aligned}
   $$
 
@@ -171,12 +171,10 @@ see below.
 >     <summary>
 >
 >   let $S \equiv \;\text{if}\; x > 0 \;\text{then}\; y \coloneqq 0$, then:
->
 >   1. evaluate $S$ in $\sigma$, where $\sigma(x) = 5$
 >   2. evaluate $S$ in $\sigma'$, where $\sigma'(x) < -2$
 >
 >     </summary>
->
 >   1. $\lang S, \sigma \rang \rarr \lang , \sigma' \rang \rarr \lang E, \sigma[y \mapsto 0] \rang$
 >   2. $\lang S, \sigma' \rang \rarr \lang \text{skip}, \sigma' \rang \rarr \lang E, \sigma' \rang$
 >

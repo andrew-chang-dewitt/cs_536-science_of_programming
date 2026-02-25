@@ -5,5 +5,6 @@
 - [Jan 30, 2026: updating state](./0130-updating_state_proper_satisfaction_quant_pred/)
 - [Feb 4, 2026: statements in simplified language](./0204-statements_simplified_lang/)
 - [Feb 6, 2026: statements & evaluating programs](./0206-statements_eval_prog/)
-- [Feb 11, 2026: properties & consequences of bottom & nondeterminism](./0211-prop_consq_of_bottom/)
+- [Feb 11, 2026: properties & consequences of bottom](./0211-prop_consq_of_bottom/)
 - [Feb 13, 2026: nondeterminism & strength of predicates](./0213-nondeterm_strength_pred/)
+- [Feb 18, 2026: hoare triples & the weakest precondition](./0218-hoare_triples/)
