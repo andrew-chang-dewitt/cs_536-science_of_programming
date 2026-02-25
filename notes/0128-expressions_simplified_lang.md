@@ -1,8 +1,8 @@
 ---
 title: "Program verification: expressions in a simplified programming language"
-description: "Lecture on representing expressions (& associated data types) in a simplified language for the purpose of reasoning about using propositional & predicate logic. Covers evaluating expressions in context of a state as well as rules for updating a state's bindings."
+description: "Lecture on representing expressions (& associated data types) in a simplified language for the purpose of reasoning about using propositional & predicate logic. Covers evaluating expressions in context of a state."
 keywords:
-  - "state"
+  - "program state"
   - "evaluation"
   - "expressions"
   - "program verification"
@@ -167,32 +167,3 @@ how to represent it?
 > [!TODO]
 >
 > finish examples!
-
-## updating state
-
-when workign with some state, $\sigma$, a variable, $x$, & a
-value $\alpha$, we update $\sigma$ at $x$ with $\alpha$ (written
-as $\sigma[x \mapsto \alpha]$ ) by copying $\sigma$ and binding $x$ in
-it to $\alpha$ & saving this as a new state.
-
-the state update notation is read left-to-right;
-e.g. $\sigma[x \mapsto \alpha](v)$ means evaluate $v$ in the new state
-created by updating $x$ in $\sigma$ to $\alpha$.
-
-> [!ASIDE]
->
-> ...
->
-> let $\sigma = \{x = 1, y = 2\}$ & answer the following about state $\tau$:
->
-> let $\tau = \sigma[x \mapsto 3]$, then $\tau = \{...\}
->
-> $$
-> \begin{aligned}
-> ...
-> \end{aligned}
-> $$
-
-> [!TODO]
->
-> finish examples on updating state above!

@@ -2,7 +2,7 @@
 - [Jan 16, 2026: more prop logic](./0116-more_prop_logic/)
 - [Jan 21, 2026: proofs & predicate logic](./0121-proof_of_truth_and_quantified_predicates/)
 - [Jan 28, 2026: evaluation of expressions & updating state](./0128-expressions_simplified_lang/)
-- [Jan 30, 2026: updating state](./0130-updating_state/)
+- [Jan 30, 2026: updating state](./0130-updating_state_proper_satisfaction_quant_pred/)
 - [Feb 4, 2026: statements in simplified language](./0204-statements_simplified_lang/)
 - [Feb 6, 2026: statements & evaluating programs](./0206-statements_eval_prog/)
 - [Feb 11, 2026: properties & consequences of bottom & nondeterminism](./0211-prop_consq_of_bottom/)
