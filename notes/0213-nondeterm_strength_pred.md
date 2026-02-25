@@ -11,7 +11,7 @@ keywords:
   - "illinois tech"
 meta:
   byline: Andrew Chang-DeWitt
-  published: "2026-02-13T10:00-06:00"
+  # published: "2026-02-13T10:00-06:00"
 ---
 
 ## agenda
